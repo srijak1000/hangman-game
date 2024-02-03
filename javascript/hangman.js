@@ -7,7 +7,6 @@ var fruits = {
 
 // Selected difficulty level
 let selectedDifficulty = 'easy';
-
 let answer = '';
 let maxWrong = 6;
 let mistakes = 0;
