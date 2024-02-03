@@ -29,3 +29,19 @@ function handleGuess(chosenLetter) {
         updateHangmanPicture();
     }
 }
+function updateHangmanPicture() {
+    document.getElementById('hangmanPic').src = './images/' + mistakes + '.jpg';
+}
+
+function checkIfGameWon() {
+    if (wordStatus === answer) {
+        document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    }
+}
+
+function checkIfGameLost() {
+    if (mistakes === maxWrong) {
+        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
+        document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    }
+}
