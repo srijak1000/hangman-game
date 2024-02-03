@@ -1,26 +1,12 @@
-var fruits = [
-    'APPLE',
-    'BANANA',
-    'ORANGE',
-    'GRAPES',
-    'STRAWBERRY',
-    'PINEAPPLE',
-    'MANGO',
-    'WATERMELON',
-    'KIWI',
-    'PEACH',
-    'CHERRY',
-    'BLUEBERRY',
-    'PEAR',
-    'PLUM',
-    'RASPBERRY',
-    'BLACKBERRY',
-    'AVOCADO',
-    'POMEGRANATE',
-    'COCONUT'
-];
+// Fruits array with different word lengths
+var fruits = {
+    'easy': ['APPLE', 'BANANA', 'KIWI', 'PEAR'],
+    'medium': ['ORANGE', 'GRAPES', 'MANGO', 'PLUM', 'AVOCADO'],
+    'hard': ['STRAWBERRY', 'PINEAPPLE', 'WATERMELON', 'PEACH', 'CHERRY', 'BLUEBERRY', 'RASPBERRY', 'BLACKBERRY', 'POMEGRANATE', 'COCONUT']
+};
 
-// Taking a finite set of values with which user-input will be compared
+// Selected difficulty level
+let selectedDifficulty = 'easy';
 
 let answer = '';
 let maxWrong = 6;
@@ -30,6 +16,26 @@ let wordStatus = null;
 
 function randomWord() {
     answer = fruits[Math.floor(Math.random() * fruits.length)]; //Generating a random word to be compared
+}
+
+function setDifficulty(difficulty) {
+    selectedDifficulty = difficulty;
+    document.getElementById('easyBtn').classList.remove('selected-difficulty');
+    document.getElementById('mediumBtn').classList.remove('selected-difficulty');
+    document.getElementById('hardBtn').classList.remove('selected-difficulty');
+
+    // Add 'selected-difficulty' class to the current button with a slight delay
+    setTimeout(() => {
+        document.getElementById(difficulty + 'Btn').classList.add('selected-difficulty');
+    }, 0);
+
+    // Update the current difficulty display
+    document.getElementById('currentDifficulty').innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+    reset();
+}
+
+function getRandomWord() {
+    answer = fruits[selectedDifficulty][Math.floor(Math.random() * fruits[selectedDifficulty].length)];
 }
 
 function generateButtons() {
@@ -68,14 +74,14 @@ function updateHangmanPicture() {
 
 function checkIfGameWon() {
     if (wordStatus === answer) {
-        document.getElementById('keyboard').innerHTML = '<p class="keyboard-won">You Won!!!</p>';
+        document.getElementById('keyboard').innerHTML = '<p class="won">You Won!!!</p>';
     }
 }
 
 function checkIfGameLost() {
     if (mistakes === maxWrong) {
         document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-        document.getElementById('keyboard').innerHTML = '<p class="keyboard-lost">You Lost!!!</p>';
+        document.getElementById('keyboard').innerHTML = '<p class="lost">You Lost!!!</p>';
     }
 }
 
@@ -94,7 +100,7 @@ function reset() {
     guessed = [];
     document.getElementById('hangmanPicture').src = './images/0.jpg';
 
-    randomWord();
+    getRandomWord();
     guessedWord();
     updateMistakes();
     generateButtons();
@@ -102,6 +108,6 @@ function reset() {
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
 
-randomWord();
+getRandomWord();
 generateButtons();
 guessedWord();
