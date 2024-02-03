@@ -65,3 +65,9 @@ function reset() {
     updateMistakes();
     generateButtons();
 }
+
+document.getElementById('maxWrong').innerHTML = maxWrong;
+
+randomWord();
+generateButtons();
+guessedWord();
