@@ -45,3 +45,23 @@ function checkIfGameLost() {
         document.getElementById('keyboard').innerHTML = 'You Lost!!!';
     }
 }
+function guessedWord() {
+    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+
+    document.getElementById('wordSpotlight').innerHTML = wordStatus;
+}
+
+function updateMistakes() {
+    document.getElementById('mistakes').innerHTML = mistakes;
+}
+
+function reset() {
+    mistakes = 0;
+    guessed = [];
+    document.getElementById('hangmanPic').src = './images/0.jpg';
+
+    randomWord();
+    guessedWord();
+    updateMistakes();
+    generateButtons();
+}
