@@ -35,11 +35,30 @@
             padding-bottom: 50px;
         }
 
+        .custom-button {
+            background-color: rgb(232, 58, 58) !important;
+            color: white !important;
+            border-color: black !important;
+        }
+
         #keyboard {
             font-size: 18px;
             font-weight: bold;
             text-align: center;
             margin-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .won {
+            color: rgb(59, 210, 59) !important;
+            text-shadow: 2px 2px 4px black;
+            font-size: 24px;
+        }
+
+        .lost {
+            color: rgb(255, 74, 74) !important;
+            text-shadow: 2px 2px 4px black;
+            font-size: 24px;
         }
     </style>
     <meta charset="UTF-8">
@@ -53,7 +72,7 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Hangman</h1>
+        <h1 class="text-center">Hangman Game</h1>
         <div style="color: white; text-shadow: 2px 2px 4px black;" class="float-right">Wrong Guesses: <span
                 id='mistakes'>0</span> of <span id='maxWrong'></span></div>
         <div class="text-center">

@@ -36,7 +36,7 @@ function generateButtons() {
   let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
     `
       <button
-        class="btn btn-lg btn-primary m-2"
+        class="btn btn-lg btn-primary m-2 custom-button"
         id='` + letter + `'
         onClick="handleGuess('` + letter + `')"
       >
@@ -68,14 +68,14 @@ function updateHangmanPicture() {
 
 function checkIfGameWon() {
   if (wordStatus === answer) {
-    document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    document.getElementById('keyboard').innerHTML = '<p class="won">You Won!!!</p>';
   }
 }
 
 function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-    document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    document.getElementById('keyboard').innerHTML = '<p class="lost">You Lost!!!</p>';
   }
 }
 
