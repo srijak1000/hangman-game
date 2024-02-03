@@ -29,19 +29,19 @@
             text-shadow: 2px 2px 4px black;
         }
 
-        img {
+        .hangmanPicture {
             height: 300px;
             object-fit: cover;
             padding-bottom: 50px;
         }
 
-        .custom-button {
+        .alphabet-button {
             background-color: rgb(232, 58, 58) !important;
             border-color: black !important;
             box-shadow: 2px 2px 4px black;
         }
 
-        #keyboard {
+        .keyboard {
             font-size: 18px;
             font-weight: bold;
             text-align: center;
@@ -50,16 +50,28 @@
         }
 
         .won {
-            color: rgb(59, 210, 59);
+            color: rgb(59, 210, 59) !important;
             text-shadow: 2px 2px 4px black;
             font-size: 24px;
         }
 
         .lost {
-            color: rgb(255, 74, 74);
+            color: rgb(255, 74, 74) !important;
             text-shadow: 2px 2px 4px black;
             font-size: 24px;
         }
+
+        .reset-button {
+            background-color: rgb(255, 147, 165) !important;
+            border-color: red !important;
+            box-shadow: 3px 3px 4px black;
+        }
+
+        .basic-text {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+        }
+        
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,16 +85,15 @@
 <body>
     <div class="container">
         <h1 class="text-center">Hangman Game</h1>
-        <div style="color: white; text-shadow: 2px 2px 4px black;" class="float-right">Wrong Guesses: <span
-                id='mistakes'>0</span> of <span id='maxWrong'></span></div>
+        <div class="float-right basic-text">Wrong Guesses: <span id='mistakes'>0</span> of <span
+                id='maxWrong'></span></div>
         <div class="text-center">
-            <img id='hangmanPic' src="./images/0.jpg" alt="">
-            <p style="color: white; text-shadow: 2px 2px 4px black;">Guess the Fruit:</p>
-            <p style="color: white; text-shadow: 2px 2px 4px black;" id="wordSpotlight">The word to be guessed goes here
+            <img id='hangmanPicture' class="hangmanPicture" src="./images/0.jpg" alt="">
+            <p class="basic-text">Guess the Fruit:</p>
+            <p id="wordSpotlight" class="basic-text">The word to be guessed goes here
             </p>
-            <div id="keyboard"></div>
-            <button style="background-color: rgb(255, 147, 165); border-color: red; box-shadow: 3px 3px 4px black;"
-                class="btn btn-info" onClick="reset()">RESET</button>
+            <div id="keyboard" class="keyboard"></div>
+            <button class="btn btn-info reset-button" onClick="reset()">RESET</button>
         </div>
     </div>
 

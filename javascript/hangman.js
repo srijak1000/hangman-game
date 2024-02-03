@@ -36,7 +36,7 @@ function generateButtons() {
     let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter =>
         `
       <button
-        class="btn btn-lg btn-primary m-2 custom-button"
+        class="btn btn-lg btn-primary m-2 alphabet-button"
         id='` + letter + `'
         onClick="handleGuess('` + letter + `')"
       >
@@ -63,19 +63,19 @@ function handleGuess(chosenLetter) {
 }
 
 function updateHangmanPicture() {
-    document.getElementById('hangmanPic').src = './images/' + mistakes + '.jpg';
+    document.getElementById('hangmanPicture').src = './images/' + mistakes + '.jpg';
 }
 
 function checkIfGameWon() {
     if (wordStatus === answer) {
-        document.getElementById('keyboard').innerHTML = '<p class="won">You Won!!!</p>';
+        document.getElementById('keyboard').innerHTML = '<p class="keyboard-won">You Won!!!</p>';
     }
 }
 
 function checkIfGameLost() {
     if (mistakes === maxWrong) {
         document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-        document.getElementById('keyboard').innerHTML = '<p class="lost">You Lost!!!</p>';
+        document.getElementById('keyboard').innerHTML = '<p class="keyboard-lost">You Lost!!!</p>';
     }
 }
 
@@ -92,7 +92,7 @@ function updateMistakes() {
 function reset() {
     mistakes = 0;
     guessed = [];
-    document.getElementById('hangmanPic').src = './images/0.jpg';
+    document.getElementById('hangmanPicture').src = './images/0.jpg';
 
     randomWord();
     guessedWord();
