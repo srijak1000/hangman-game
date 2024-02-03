@@ -1,26 +1,26 @@
 var fruits = [
-    'apple',
-    'banana',
-    'orange',
-    'grapes',
-    'strawberry',
-    'pineapple',
-    'mango',
-    'watermelon',
-    'kiwi',
-    'peach',
-    'cherry',
-    'blueberry',
-    'pear',
-    'plum',
-    'raspberry',
-    'blackberry',
-    'avocado',
-    'pomegranate',
-    'coconut'
-  ];
-  
-  
+    'APPLE',
+    'BANANA',
+    'ORANGE',
+    'GRAPES',
+    'STRAWBERRY',
+    'PINEAPPLE',
+    'MANGO',
+    'WATERMELON',
+    'KIWI',
+    'PEACH',
+    'CHERRY',
+    'BLUEBERRY',
+    'PEAR',
+    'PLUM',
+    'RASPBERRY',
+    'BLACKBERRY',
+    'AVOCADO',
+    'POMEGRANATE',
+    'COCONUT'
+];
+
+// Taking a finite set of values with which user-input will be compared
 
 let answer = '';
 let maxWrong = 6;
@@ -29,12 +29,12 @@ let guessed = [];
 let wordStatus = null;
 
 function randomWord() {
-  answer = fruits[Math.floor(Math.random() * fruits.length)];
+    answer = fruits[Math.floor(Math.random() * fruits.length)]; //Generating a random word to be compared
 }
 
 function generateButtons() {
-  let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
-    `
+    let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter =>
+        `
       <button
         class="btn btn-lg btn-primary m-2 custom-button"
         id='` + letter + `'
@@ -44,60 +44,60 @@ function generateButtons() {
       </button>
     `).join('');
 
-  document.getElementById('keyboard').innerHTML = buttonsHTML;
+    document.getElementById('keyboard').innerHTML = buttonsHTML;
 }
 
 function handleGuess(chosenLetter) {
-  guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-  document.getElementById(chosenLetter).setAttribute('disabled', true);
+    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
+    document.getElementById(chosenLetter).setAttribute('disabled', true);
 
-  if (answer.indexOf(chosenLetter) >= 0) {
-    guessedWord();
-    checkIfGameWon();
-  } else if (answer.indexOf(chosenLetter) === -1) {
-    mistakes++;
-    updateMistakes();
-    checkIfGameLost();
-    updateHangmanPicture();
-  }
+    if (answer.indexOf(chosenLetter) >= 0) {
+        guessedWord();
+        checkIfGameWon();
+    } else if (answer.indexOf(chosenLetter) === -1) {
+        mistakes++;
+        updateMistakes();
+        checkIfGameLost();
+        updateHangmanPicture();
+    }
 }
 
 function updateHangmanPicture() {
-  document.getElementById('hangmanPic').src = './images/' + mistakes + '.jpg';
+    document.getElementById('hangmanPic').src = './images/' + mistakes + '.jpg';
 }
 
 function checkIfGameWon() {
-  if (wordStatus === answer) {
-    document.getElementById('keyboard').innerHTML = '<p class="won">You Won!!!</p>';
-  }
+    if (wordStatus === answer) {
+        document.getElementById('keyboard').innerHTML = '<p class="won">You Won!!!</p>';
+    }
 }
 
 function checkIfGameLost() {
-  if (mistakes === maxWrong) {
-    document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
-    document.getElementById('keyboard').innerHTML = '<p class="lost">You Lost!!!</p>';
-  }
+    if (mistakes === maxWrong) {
+        document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
+        document.getElementById('keyboard').innerHTML = '<p class="lost">You Lost!!!</p>';
+    }
 }
 
 function guessedWord() {
-  wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
 
-  document.getElementById('wordSpotlight').innerHTML = wordStatus;
+    document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
 
 function updateMistakes() {
-  document.getElementById('mistakes').innerHTML = mistakes;
+    document.getElementById('mistakes').innerHTML = mistakes;
 }
 
 function reset() {
-  mistakes = 0;
-  guessed = [];
-  document.getElementById('hangmanPic').src = './images/0.jpg';
+    mistakes = 0;
+    guessed = [];
+    document.getElementById('hangmanPic').src = './images/0.jpg';
 
-  randomWord();
-  guessedWord();
-  updateMistakes();
-  generateButtons();
+    randomWord();
+    guessedWord();
+    updateMistakes();
+    generateButtons();
 }
 
 document.getElementById('maxWrong').innerHTML = maxWrong;
