@@ -3,6 +3,14 @@
 
 <head>
     <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
         body {
             background-image: url(/images/fruit_background.jpg);
             background-color: #cccccc;
@@ -14,10 +22,24 @@
         }
 
         h1.text-center {
-            padding-top: 20px;
+            padding-top: 15px;
             color: white;
             font-size: 100px;
             font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        img {
+            height: 300px;
+            object-fit: cover;
+            padding-bottom: 50px;
+        }
+
+        #keyboard {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
     <meta charset="UTF-8">
@@ -32,13 +54,16 @@
 <body>
     <div class="container">
         <h1 class="text-center">Hangman</h1>
-        <div class="float-right">Wrong Guesses: <span id='mistakes'>0</span> of <span id='maxWrong'></span></div>
+        <div style="color: white; text-shadow: 2px 2px 4px black;" class="float-right">Wrong Guesses: <span
+                id='mistakes'>0</span> of <span id='maxWrong'></span></div>
         <div class="text-center">
             <img id='hangmanPic' src="./images/0.jpg" alt="">
-            <p>Guess the Fruit:</p>
-            <p id="wordSpotlight">The word to be guessed goes here</p>
+            <p style="color: white; text-shadow: 2px 2px 4px black;">Guess the Fruit:</p>
+            <p style="color: white; text-shadow: 2px 2px 4px black;" id="wordSpotlight">The word to be guessed goes here
+            </p>
             <div id="keyboard"></div>
-            <button class="btn btn-info" onClick="reset()">Reset</button>
+            <button style="background-color: pink; border-color: red; box-shadow: 3px 3px 4px black;"
+                class="btn btn-info" onClick="reset()">Reset</button>
         </div>
     </div>
 
